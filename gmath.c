@@ -22,7 +22,7 @@ color get_lighting( double *normal, double *view, color alight, double light[2][
 	i.green = a.green + d.green + s.green;
 	i.blue = a.blue + d.blue + s.blue;
 	
-	//limit_color(&i);
+	limit_color(&i);
 	
   return i;
 }
@@ -74,6 +74,15 @@ void limit_color( color * c ) {
 	}
 	if (c->blue > 255) {
 		c->blue = 255;
+	}
+	if (c->red < 0) {
+		c->red = 0;
+	}
+	if (c->green < 0) {
+		c->green = 0;
+	}
+	if (c->blue < 0) {
+		c->blue = 0;
 	}
 }
 
